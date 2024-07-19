@@ -26,4 +26,5 @@ jobs:
           pm2 stop daisa-frontend
           npm run build
           pm2 start daisa-frontend
+          pm2 save
         EOF
