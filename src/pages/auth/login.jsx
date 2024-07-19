@@ -37,7 +37,7 @@ const LoginPage = () => {
         userInfo.token = res.data.data.token;
         saveUserInfo();
         toast.success('вход успешный');
-        if (userInfo.type == 1) Router.push('/admin'); else Router.push('/');
+        Router.push('/');
       }
     }).catch((err) => {
       if (err.response?.data.message) toast.error(err.response.data.message);

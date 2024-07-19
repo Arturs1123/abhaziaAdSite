@@ -180,11 +180,6 @@ export default function NavBar() {
                             >
                               {userInfo.firstName}{userInfo.lastName}-Выйти
                             </div>
-                            {userInfo.type == 1 ? (
-                              <div className='px-4 py-2 hover:bg-slate-100'>
-                                <Link href="/admin">Админ-панель</Link>
-                              </div>
-                            ) : null}
                           </>
                         ) : (
                           <div className="block px-4 py-2 hover:bg-slate-100">
