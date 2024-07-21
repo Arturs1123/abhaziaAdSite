@@ -149,9 +149,9 @@ export default function Home() {
                 </h1> */}
                 <h1 className="px-2 text-[30px] lg:text-[62px]" style={{ lineHeight: 1.2 }}>
                   Абхазия online - ваш
-                  <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-2 lg:-top-3 -left-0">
+                  <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-5 lg:-top-6 -left-0">
                     <a href="http://daisa.ru" target="_blank">
-                      <Image src='/img/highlight.svg' width={160} height={100} objectFit="cover" />
+                      <img src='/img/highlight.svg' width={160} height={100} className="object-cover " />
                     </a>
                   </div>
                   </span>
@@ -212,7 +212,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {blogRecent.slice(0, 3).map((v, i) => (
                 <div key={i} className="col-span-3 md:col-span-1">
-                  <ImageBottomText
+                  <imgBottomText
                     id={v.id}
                     imgSrc={v.bgImg}
                     imgDesc={v.title}
@@ -426,7 +426,7 @@ export default function Home() {
               <div className="text-[#FF6432] cursor-pointer class-p3 !text-[16px] md:!text-[20px] mr-4"
                 onClick={() => { setIsEllipsis(!isEllipsis) }}>{!isEllipsis ? ('Сокращать') : ('Развернуть')}</div>
               <div className="mt-1">
-                <Image src={'/img/arrow-down.png'} className={!isEllipsis ? 'rotate-180' : ''} width={24} height={24} objectFit="cover" />
+                <img src={'/img/arrow-down.png'} className={`${!isEllipsis ? 'rotate-180' : ''} object-cover `} width={24} height={24} />
               </div>
             </div>
           </div>
