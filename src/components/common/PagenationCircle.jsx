@@ -10,7 +10,7 @@ const PagenationCircle = ({ nowPage, totalCount, stepValue }) => {
     const [isClicked2, setIsClicked2] = useState(false);
     const [isClicked3, setIsClicked3] = useState(false);
     const pColor = "#FF6432";
-    const pageNum = 0;
+    let pageNum = 0;
     useEffect(() => {
         if (curPos >= (totalCount / stepValue - 2)) setIsFull(false); else setIsFull(true);
     }, [totalCount])

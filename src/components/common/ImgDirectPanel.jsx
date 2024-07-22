@@ -8,10 +8,11 @@ export default function ImgDirectPanel({ data, link }) {
     // const [overflowWidth, setOverflowWidth] = useState(270);
     const overflowWidth = data.length * 45;
     const handleArrowClick = (step) => {
-        curSi += step;
-        curSi = (curSi < 0) ? 0 : curSi;
-        curSi = (curSi > data.length - 3) ? data.length - 3 : curSi;
-        setCurSi(curSi);
+        let _cursi = curSi
+        _curSi += step;
+        _curSi = (_curSi < 0) ? 0 : curSi;
+        _curSi = (_curSi > data.length - 3) ? data.length - 3 : _curSi;
+        setCurSi(_curSi);
     }
 
     // useEffect(() => {
