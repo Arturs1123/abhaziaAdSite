@@ -48,10 +48,11 @@ const BlogDetailPage = () => {
   const [curSi, setCurSi] = useState(0);
 
   const handleArrowClick = (step) => {
-    curSi += step;
-    curSi = (curSi < 0) ? 0 : curSi;
-    curSi = (curSi > blogRecent.length - 3) ? blogRecent.length - 3 : curSi;
-    setCurSi(curSi);
+    let _curSi = curSi
+    _curSi += step;
+    _curSi = (_curSi < 0) ? 0 : _curSi;
+    _curSi = (_curSi > blogRecent.length - 3) ? blogRecent.length - 3 : _curSi;
+    setCurSi(_curSi);
   }
 
   const getBlogData = (detailId) => {
