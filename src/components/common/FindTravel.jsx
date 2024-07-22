@@ -341,10 +341,10 @@ export default function FindTravel() {
                 </div>
                 <div className="flex gap-6">
                   <Image src="/img/minus.png" width={50} height={50} className="hover:shadow-md cursor-pointer"
-                    onClick={() => { let temp = --childrenNum; if (temp > 0) setChildrenNum(temp); }} />
+                    onClick={() => { let temp = childrenNum - 1; if (temp > 0) setChildrenNum(temp); }} />
                   <div className="pt-2 class-p1">{childrenNum}</div>
                   <Image src="/img/plus.png" width={50} height={50} className="hover:shadow-md cursor-pointer"
-                    onClick={() => { let temp = ++childrenNum; if (temp < 19) setChildrenNum(temp); }} />
+                    onClick={() => { let temp = childrenNum + 1; if (temp < 19) setChildrenNum(temp); }} />
                 </div>
               </div>
               {(childrenType != '') && (
