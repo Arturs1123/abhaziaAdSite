@@ -25,11 +25,12 @@ const PagenationCircle = ({ nowPage, totalCount, stepValue }) => {
         if (tId == 3) setIsClicked3(true);
     }
     const handleArrowClick = (step) => {
-        curPos += step;
-        if (curPos <= 1) { curPos = 1; setIsZero(false); } else setIsZero(true);
-        if (curPos >= (totalCount / stepValue - 2)) setIsFull(false); else setIsFull(true);
-        pageNum = (curPos - 1 + Number(curSel) - 1);
-        setCurPos(curPos);
+        let _curPos = curPos
+        _curPos += step;
+        if (_curPos <= 1) { _curPos = 1; setIsZero(false); } else setIsZero(true);
+        if (_curPos >= (totalCount / stepValue - 2)) setIsFull(false); else setIsFull(true);
+        pageNum = (_curPos - 1 + Number(_curSel) - 1);
+        setCurPos(_curPos);
         nowPage(pageNum);
     }
     const divStyle1 = {
