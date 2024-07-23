@@ -149,7 +149,7 @@ export default function Home() {
                 </h1> */}
                 <h1 className="px-2 text-[30px] lg:text-[62px]" style={{ lineHeight: 1.2 }}>
                   Абхазия online - ваш
-                  <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-2 lg:-top-3 -left-0">
+                  <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-5 lg:-top-6 -left-0">
                     <a href="http://daisa.ru" target="_blank">
                       <img src='/img/highlight.svg' width={160} height={100} className="object-cover " />
                     </a>
