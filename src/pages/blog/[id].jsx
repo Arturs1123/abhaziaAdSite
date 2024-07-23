@@ -115,7 +115,7 @@ const BlogDetailPage = () => {
             {/* <img src={Blog} alt="Picture" layout="responsive" /> */}
             {blogData.bgImg ? (
               // <img loader={imageLoader} src={blogData.bgImg} width={1440} height={990} />
-              <imgChak src={blogData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              <ImageChak src={blogData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
             ) : null}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
             <div className="absolute bottom-0 lg:bottom-15 lg:px-[8.33333333%] lg:py-[60px] lg:space-y-8 px-4 py-8 space-y-2">

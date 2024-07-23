@@ -102,7 +102,7 @@ const DirectionDetailPage = () => {
 
           <div className="relative w-full">
             {directionData.bgImg && (
-              <imgChak src={directionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              <ImageChak src={directionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
             )}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
 

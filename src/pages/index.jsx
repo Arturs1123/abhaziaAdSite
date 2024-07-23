@@ -402,7 +402,7 @@ export default function Home() {
             </div>
             <div className="absolute md:relative right-0 w-[24%] justify-center">
               <div className="flex justify-center"><img src="/img/bar.png" /></div>
-              <div className="flex justify-center"><imgChak src="/img/percent.png" /></div>
+              <div className="flex justify-center"><ImageChak src="/img/percent.png" /></div>
             </div>
           </div>
         </div>
