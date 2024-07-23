@@ -112,10 +112,10 @@ const BlogDetailPage = () => {
         <div className="bg-white mt-[60px] md:mt-[94px]">
           {loading && (<div className="flex justify-center" ><TailSpin color="green" radius={"5px"} /></div>)}
           <div className="relative w-full">
-            {/* <Image src={Blog} alt="Picture" layout="responsive" /> */}
+            {/* <img src={Blog} alt="Picture" layout="responsive" /> */}
             {blogData.bgImg ? (
-              // <Image loader={imageLoader} src={blogData.bgImg} width={1440} height={990} />
-              <ImageChak src={blogData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              // <img loader={imageLoader} src={blogData.bgImg} width={1440} height={990} />
+              <imgChak src={blogData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
             ) : null}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
             <div className="absolute bottom-0 lg:bottom-15 lg:px-[8.33333333%] lg:py-[60px] lg:space-y-8 px-4 py-8 space-y-2">
@@ -210,7 +210,7 @@ const BlogDetailPage = () => {
                   <div className="flex flex-col md:flex-row gap-y-4">
                     <div className="w-full md:w-[10%] mr-2">
                       <div className="flex w-12 md:w-14 h-12 md:h-14 rounded-full bg-[#D7D7D7] justify-center items-center">
-                        <Image src={'/img/SVG/User.svg'} width={24} height={24} />
+                        <img src={'/img/SVG/User.svg'} width={24} height={24} />
                       </div>
                     </div>
                     <div className="flex flex-col w-full md:w-[90%] border border-[#D7D7D7] rounded-xl shadow">
@@ -299,7 +299,7 @@ const BlogDetailPage = () => {
               <div>
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="hidden md:block ">
-                    <Image className="cursor-pointer"
+                    <img className="cursor-pointer"
                       src={'/icon/ArrowLeft.png'} width={48} height={48} layout="fixed"
                       onClick={() => handleArrowClick(-1)} />
                   </div>
@@ -307,7 +307,7 @@ const BlogDetailPage = () => {
                     {
                       blogRecent?.slice(curSi, curSi + 3).map((v, i, a) => (
                         <div key={i} className="col-span-3 md:col-span-1">
-                          <ImageBottomText
+                          <imgBottomText
                             id={v.id}
                             imgSrc={v.bgImg}
                             imgDesc={v.title}
@@ -319,7 +319,7 @@ const BlogDetailPage = () => {
                     }
                   </div>
                   <div className="hidden md:block ">
-                    <Image className="cursor-pointer"
+                    <img className="cursor-pointer"
                       src={'/icon/ArrowRight.png'} width={48} height={48} layout="fixed"
                       onClick={() => handleArrowClick(1)} />
                   </div>

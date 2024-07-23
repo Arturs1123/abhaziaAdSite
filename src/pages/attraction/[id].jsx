@@ -98,10 +98,10 @@ const AttractionDetail = () => {
         <div className="bg-white mt-[60px] md:mt-[94px]">
           {loading && (<div className="flex justify-center" ><TailSpin color="green" radius={"5px"} /></div>)}
           <div className="relative w-full">
-            {/* <Image src='/img/attraction.png' alt="Picture" width={900} height={600} layout="responsive" /> */}
+            {/* <img src='/img/attraction.png' alt="Picture" width={900} height={600} layout="responsive" /> */}
             {attractionData.bgImg ? (
-              <ImageChak src={attractionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
-              // <Image loader={imageLoader} src={attractionData.bgImg} width={1440} height={990} />
+              <imgChak src={attractionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              // <img loader={imageLoader} src={attractionData.bgImg} width={1440} height={990} />
             ) : null}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
 

@@ -151,7 +151,7 @@ export default function Home() {
                   Абхазия online - ваш
                   <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-2 lg:-top-3 -left-0">
                     <a href="http://daisa.ru" target="_blank">
-                      <Image src='/img/highlight.svg' width={160} height={100} objectFit="cover" />
+                      <img src='/img/highlight.svg' width={160} height={100} objectFit="cover" />
                     </a>
                   </div>
                   </span>
@@ -212,7 +212,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {blogRecent.slice(0, 3).map((v, i) => (
                 <div key={i} className="col-span-3 md:col-span-1">
-                  <ImageBottomText
+                  <imgBottomText
                     id={v.id}
                     imgSrc={v.bgImg}
                     imgDesc={v.title}
@@ -254,26 +254,26 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
               <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular1.png' />
+                <imgSecondRightText imgSrc='/img/popular1.png' />
               </div>
               <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular2.png' />
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
-              <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular3.png' />
-              </div>
-              <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular4.png' />
+                <imgSecondRightText imgSrc='/img/popular2.png' />
               </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
               <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular5.png' />
+                <imgSecondRightText imgSrc='/img/popular3.png' />
               </div>
               <div className="w-full lg:w-1/2">
-                <ImageSecondRightText imgSrc='/img/popular6.png' />
+                <imgSecondRightText imgSrc='/img/popular4.png' />
+              </div>
+            </div>
+            <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
+              <div className="w-full lg:w-1/2">
+                <imgSecondRightText imgSrc='/img/popular5.png' />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <imgSecondRightText imgSrc='/img/popular6.png' />
               </div>
             </div>
             <div className="w-full flex justify-center items-center">
@@ -402,7 +402,7 @@ export default function Home() {
             </div>
             <div className="absolute md:relative right-0 w-[24%] justify-center">
               <div className="flex justify-center"><img src="/img/bar.png" /></div>
-              <div className="flex justify-center"><ImageChak src="/img/percent.png" /></div>
+              <div className="flex justify-center"><imgChak src="/img/percent.png" /></div>
             </div>
           </div>
         </div>
@@ -426,7 +426,7 @@ export default function Home() {
               <div className="text-[#FF6432] cursor-pointer class-p3 !text-[16px] md:!text-[20px] mr-4"
                 onClick={() => { setIsEllipsis(!isEllipsis) }}>{!isEllipsis ? ('Сокращать') : ('Развернуть')}</div>
               <div className="mt-1">
-                <Image src={'/img/arrow-down.png'} className={!isEllipsis ? 'rotate-180' : ''} width={24} height={24} objectFit="cover" />
+                <img src={'/img/arrow-down.png'} className={!isEllipsis ? 'rotate-180' : ''} width={24} height={24} objectFit="cover" />
               </div>
             </div>
           </div>

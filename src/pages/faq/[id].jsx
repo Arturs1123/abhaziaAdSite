@@ -168,7 +168,7 @@ const FaqDetailPage = () => {
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <Image src={faqData.ownerAatar ? faqData.ownerAatar : '/icon/avatar.png'}
+                  <img src={faqData.ownerAatar ? faqData.ownerAatar : '/icon/avatar.png'}
                     width={56} height={56}
                     objectFit="cover" className="rounded-full"
                   />
@@ -223,7 +223,7 @@ const FaqDetailPage = () => {
                   <div className="flex flex-col md:flex-row gap-y-4">
                     <div className="pr-2 md:pr-4">
                       <div className="flex w-[56px] h-[56px] rounded-full bg-[#D7D7D7] justify-center items-center">
-                        <Image src={userAvatar ? userAvatar : '/icon/avatar.png'} width={56} height={56} className="rounded-full" />
+                        <img src={userAvatar ? userAvatar : '/icon/avatar.png'} width={56} height={56} className="rounded-full" />
                       </div>
                     </div>
                     <div className="flex flex-col w-full md:w-[90%] border border-[#D7D7D7] rounded-xl min-w-[700px]">

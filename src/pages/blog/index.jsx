@@ -97,7 +97,7 @@ const BlogIndex = () => {
                   <div className="grid grid-cols-2 gap-2 md:gap-4">
                     {blogData.slice(pageNum, pageNum + 2).map((v, i) => (
                       <div key={i} className="col-span-2 md:col-span-1">
-                        <ImageRightText
+                        <imgRightText
                           id={v.id}
                           imgSrc={v.bgImg}
                           imgTitle={''}
@@ -112,7 +112,7 @@ const BlogIndex = () => {
                   <div className="grid grid-cols-3 gap-2 md:gap-4">
                     {blogData.slice(pageNum, pageNum + 3).map((v, i) => (
                       <div key={i} className="col-span-3 md:col-span-1">
-                        <ImageBottomText
+                        <imgBottomText
                           id={v.id}
                           imgSrc={v.bgImg}
                           imgDesc={v.title}

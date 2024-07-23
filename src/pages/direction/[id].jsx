@@ -102,7 +102,7 @@ const DirectionDetailPage = () => {
 
           <div className="relative w-full">
             {directionData.bgImg && (
-              <ImageChak src={directionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              <imgChak src={directionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
             )}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
 
@@ -151,26 +151,26 @@ const DirectionDetailPage = () => {
                       <div className="grid grid-cols-3 divide-x items-center justify-center text-center mt-3 md:mt-5">
                         <div onClick={() => { Router.push('/') }}>
                           <div className="hidden md:flex justify-center">
-                            <Image src='/img/SVG/House.svg' width={48} height={48} objectFit="cover" />
+                            <img src='/img/SVG/House.svg' width={48} height={48} objectFit="cover" />
                           </div>
                           <div className="flex md:hidden justify-center">
-                            <Image src='/img/SVG/House.svg' width={36} height={36} objectFit="cover" />
+                            <img src='/img/SVG/House.svg' width={36} height={36} objectFit="cover" />
                           </div>
                         </div>
                         <div onClick={() => { Router.push('/') }}>
                           <div className="hidden md:flex justify-center">
-                            <Image src='/img/SVG/Routing.svg' width={48} height={48} objectFit="cover" />
+                            <img src='/img/SVG/Routing.svg' width={48} height={48} objectFit="cover" />
                           </div>
                           <div className="flex md:hidden justify-center">
-                            <Image src='/img/SVG/Routing.svg' width={36} height={36} objectFit="cover" />
+                            <img src='/img/SVG/Routing.svg' width={36} height={36} objectFit="cover" />
                           </div>
                         </div>
                         <div onClick={() => { Router.push('/') }}>
                           <div className="hidden md:flex justify-center">
-                            <Image src='/img/SVG/Transfer.svg' width={48} height={48} />
+                            <img src='/img/SVG/Transfer.svg' width={48} height={48} />
                           </div>
                           <div className="cursor-pointer flex md:hidden justify-center">
-                            <Image src='/img/SVG/Transfer.svg' width={36} height={36} />
+                            <img src='/img/SVG/Transfer.svg' width={36} height={36} />
                           </div>
                         </div>
                       </div>
