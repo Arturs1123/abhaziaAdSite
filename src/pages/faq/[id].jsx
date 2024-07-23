@@ -170,7 +170,7 @@ const FaqDetailPage = () => {
                 <div className="flex gap-3">
                   <img src={faqData.ownerAatar ? faqData.ownerAatar : '/icon/avatar.png'}
                     width={56} height={56}
-                    objectFit="cover" className="rounded-full"
+                    className="object-cover rounded-full"
                   />
                   <div className="flex flex-col gap-1">
                     <p className="text-base md:text-md font-medium">

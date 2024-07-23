@@ -151,7 +151,7 @@ export default function Home() {
                   Абхазия online - ваш
                   <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-2 lg:-top-3 -left-0">
                     <a href="http://daisa.ru" target="_blank">
-                      <img src='/img/highlight.svg' width={160} height={100} objectFit="cover" />
+                      <img src='/img/highlight.svg' width={160} height={100} className="object-cover " />
                     </a>
                   </div>
                   </span>
@@ -254,26 +254,26 @@ export default function Home() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
               <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular1.png' />
+                <ImageSecondRightText imgSrc='/img/popular1.png' />
               </div>
               <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular2.png' />
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
-              <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular3.png' />
-              </div>
-              <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular4.png' />
+                <ImageSecondRightText imgSrc='/img/popular2.png' />
               </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
               <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular5.png' />
+                <ImageSecondRightText imgSrc='/img/popular3.png' />
               </div>
               <div className="w-full lg:w-1/2">
-                <imgSecondRightText imgSrc='/img/popular6.png' />
+                <ImageSecondRightText imgSrc='/img/popular4.png' />
+              </div>
+            </div>
+            <div className="flex flex-col lg:flex-row gap-2 md:gap-4">
+              <div className="w-full lg:w-1/2">
+                <ImageSecondRightText imgSrc='/img/popular5.png' />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <ImageSecondRightText imgSrc='/img/popular6.png' />
               </div>
             </div>
             <div className="w-full flex justify-center items-center">
@@ -426,7 +426,7 @@ export default function Home() {
               <div className="text-[#FF6432] cursor-pointer class-p3 !text-[16px] md:!text-[20px] mr-4"
                 onClick={() => { setIsEllipsis(!isEllipsis) }}>{!isEllipsis ? ('Сокращать') : ('Развернуть')}</div>
               <div className="mt-1">
-                <img src={'/img/arrow-down.png'} className={!isEllipsis ? 'rotate-180' : ''} width={24} height={24} objectFit="cover" />
+                <img src={'/img/arrow-down.png'} className={`${!isEllipsis ? 'rotate-180' : ''} object-cover `} width={24} height={24} />
               </div>
             </div>
           </div>

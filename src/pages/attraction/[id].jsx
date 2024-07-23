@@ -100,7 +100,7 @@ const AttractionDetail = () => {
           <div className="relative w-full">
             {/* <img src='/img/attraction.png' alt="Picture" width={900} height={600} layout="responsive" /> */}
             {attractionData.bgImg ? (
-              <ImageChak src={attractionData.bgImg} className="w-full h-[280px] md:h-[800px] z-50" objectFit="cover" />
+              <ImageChak src={attractionData.bgImg} className="object-cover w-full h-[280px] md:h-[800px] z-50" />
               // <img loader={imageLoader} src={attractionData.bgImg} width={1440} height={990} />
             ) : null}
             <div className="bg-gradient-to-b from-[#000] absolute bottom-0 h-3/5 md:h-2/5 w-full rotate-180"></div>
