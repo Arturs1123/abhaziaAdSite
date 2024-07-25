@@ -208,7 +208,8 @@ const DirectionDetailPage = () => {
                 <div className="w-full">
                   <div className="py-3 md:py-10 space-y-4">
                     <div className="text-base md:text-lg xl:text-lg font-medium text-[#292D32] font-Manrop detail-custom-css">
-                      <p>{directionData.description} </p>
+
+                      <p dangerouslySetInnerHTML={{ __html: directionData.description }} />
                     </div>
                     {(todayWeather.length > 0) && (
                       <WeatherPanel wData={todayWeather} id={detailId} />
