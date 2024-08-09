@@ -33,7 +33,6 @@ export default function DirectionDetailPage() {
 
   const contentData = directionData?.contents ? JSON.parse(directionData.contents[0].content) : []
   const subtitleList = contentData.filter((item, i) => item.tool == 'subtitle' && item.data.size == "level1")
-  console.log(subtitleList)
   const getDirectionRecent = () => {
     setLoading(true);
     axios.get(API_BASE_URL + '/direction', { params: {} }

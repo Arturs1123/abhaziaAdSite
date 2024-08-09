@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import Scrollspy from 'react-scrollspy'
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import { API_BASE_URL } from '../../const/CustomConsts';
 import moment from "moment";
