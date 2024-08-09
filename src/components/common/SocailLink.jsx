@@ -3,9 +3,9 @@ import TG from "../../../public/img/SVG/TG";
 import VK from "../../../public/img/SVG/VK";
 import LinkIcon from "../../../public/img/SVG/LinkIcon";
 
-const SocialLink = ({ }) => {
+const SocialLink = ({ className = "" }) => {
     return (
-        <div className="flex gap-4">
+        <div className={`flex gap-4 ${className}`}>
             <div className="p-[17px] rounded-[50px] bg-[#EEEEEE] cursor-pointer"
                 onClick={() => { Router.push("/") }}>
                 <TG />
