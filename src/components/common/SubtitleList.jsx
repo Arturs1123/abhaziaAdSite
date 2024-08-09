@@ -13,7 +13,7 @@ export default function SubtitleList({ params = [] }) {
 					<Scrollspy items={items} currentClassName="is-current">
 						{params.map((c, i) => (
 							<li key={i} className="flex items-center gap-3 py-2 !text-base md:!text-md">
-								<div className="w-3 h-3 md:!w-4 md:!h-4 bg-red-300 rounded-full"></div>
+								<div className="flex-none w-3 h-3 md:w-4 md:h-4 bg-red-300 rounded-full"></div>
 								<Link href={`#subtitle-${c.data.title}`}>{c.data.title}
 								</Link>
 							</li>
