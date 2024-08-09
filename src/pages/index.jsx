@@ -1,6 +1,5 @@
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-import Link from "next/link"
 import { Image as ImageChak } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import axios from "axios";
@@ -41,8 +40,6 @@ export default function Home() {
     setLoading(true);
     axios.get(API_BASE_URL + '/faq/active', {
       params: {
-        // limit: 5,
-        // offset: pageNum
       }
     }
     ).then((res) => {
@@ -56,8 +53,6 @@ export default function Home() {
     setLoading(true);
     axios.get(API_BASE_URL + '/attraction/active', {
       params: {
-        // limit: 5,
-        // offset: pageNum
       }
     }
     ).then((res) => {
@@ -88,8 +83,6 @@ export default function Home() {
     setLoading(true);
     axios.get(API_BASE_URL + '/blog/active', {
       params: {
-        // limit: 5,
-        // offset: pageNum
       }
     }
     ).then((res) => {
@@ -103,11 +96,9 @@ export default function Home() {
     setLoading(true);
     axios.get(API_BASE_URL + '/meta', {
       params: {
-        // limit: 5,
-        // offset: pageNum
       }
     }).then((res) => {
-      setBlockData(res.data.data);
+      setBlockData(res.data.data?res.data.data:{ id: 0, title: '', text: '', img: '' });
       setLoading(false);
     }).catch((err) => {
       console.log(err);
@@ -132,8 +123,6 @@ export default function Home() {
     <>
       <NextSeo title={metaData?.title} description={metaData?.description} />
       <Helmet>
-        {/* <title>{metaData?.title}</title>
-            <meta name="description" content={metaData?.description} /> */}
         <meta name="keywords" content={metaData?.keyword} />
       </Helmet>
       <NavBar />
@@ -144,9 +133,6 @@ export default function Home() {
 
             <div className="text-center">
               <div className="flex flex-row">
-                {/* <h1 className="px-2 text-[30px] lg:text-[62px]" style={{ lineHeight: 1.2 }}>
-                  Абхазия online — ваш <span className="span-finally"> гид </span> по Абхазии
-                </h1> */}
                 <h1 className="px-2 text-[30px] lg:text-[62px]" style={{ lineHeight: 1.2 }}>
                   Абхазия online - ваш
                   <span className="relative px-1 lg:px-2 text-nowrap"> гид <div className="absolute -top-2 lg:-top-3 -left-0">
@@ -181,7 +167,6 @@ export default function Home() {
           <div className="flex flex-col gap-0 md:gap-4">
             <h2 className='hidden md:flex'> Прямой эфир </h2>
             <h5 className='flex md:hidden'> Прямой эфир </h5>
-            {/* <div className='class-p3 !text-[16px] md:!text-[20px]'>SEO текст</div> */}
           </div>
           <div className="mt-4 md:mt-8">
             <VideoTag />
@@ -436,10 +421,3 @@ export default function Home() {
     </>
   );
 }
-
-// export async function getStaticProps() {
-//   return {
-//     revalidate: 1000000,
-//     props: {},
-//   };
-// }
