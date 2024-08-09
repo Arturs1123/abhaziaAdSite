@@ -2,7 +2,6 @@ import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import { API_BASE_URL, BgColor, BtnActive, BtnActive14 } from '../../const/CustomConsts';
 import NavBar from "../../components/Layout/NavBar";
@@ -22,7 +21,7 @@ const DirectionIndexPage = () => {
 
   const getDirectionData = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction',
+    axios.get(API_BASE_URL + '/direction/active',
       {
         limit: 0,
         offset: 0
