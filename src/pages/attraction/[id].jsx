@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
 import Router, { useRouter } from 'next/router';
 import Link from "next/link";
-import Image from "next/image";
 import { Image as ImageChak } from '@chakra-ui/react'
 import axios from "axios";
 import { NextSeo } from "next-seo";
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import Scrollspy from 'react-scrollspy'
-import { API_BASE_URL, BtnActive } from '../../const/CustomConsts';
+import { BtnActive } from '../../const/CustomConsts';
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
-import ActivePin from "../../../public/img/SVG/ActivePin";
-import InActivePin from "../../../public/img/SVG/InActivePin";
 import TeleBookPanel from "../../components/common/TeleBookPanel";
 import ImgAttractionPanel from "../../components/attraction/ImgAttractionPanel";
 import YMapProvider from "../../components/common/YMapProvider";
@@ -46,7 +42,7 @@ const AttractionDetail = () => {
   const detailId = router.query.id;
   const getAttractionRecent = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/attraction', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction', {
       params: {}
     }).then((res) => {
       setAttractionRecent(res.data.data);
@@ -57,7 +53,7 @@ const AttractionDetail = () => {
   }
   const getAttractionData = (id) => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/attraction/' + id, {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction/' + id, {
       attractionID: id
     }).then((res) => {
       setAttractionData(res.data.data);

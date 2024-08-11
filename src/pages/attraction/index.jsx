@@ -1,9 +1,8 @@
 import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL, BgColor, BtnActive, BtnActive14 } from '../../const/CustomConsts';
+import { BgColor, BtnActive, BtnActive14 } from '../../const/CustomConsts';
 import { Select } from '@chakra-ui/react'
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
@@ -27,7 +26,7 @@ const AttractionIndex = () => {
   }
   const getDirectionList = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction',
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction',
       {
         limit: 0,
         offset: 0
@@ -40,7 +39,7 @@ const AttractionIndex = () => {
   }
   const getAttraction = (spanSel) => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/attraction',
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction',
       {
         directionID: directionList[spanSel].id,
         limit: 0,

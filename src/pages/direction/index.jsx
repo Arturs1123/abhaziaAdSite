@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL, BgColor, BtnActive, BtnActive14 } from '../../const/CustomConsts';
+import { BgColor, BtnActive, BtnActive14 } from '../../const/CustomConsts';
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
 import FindTravel from "../../components/common/FindTravel";
@@ -21,7 +21,7 @@ const DirectionIndexPage = () => {
 
   const getDirectionData = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction/active',
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction/active',
       {
         limit: 0,
         offset: 0

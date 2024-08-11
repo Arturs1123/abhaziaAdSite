@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import Router from "next/router";
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL, BgColor, BtnActive, BtnActive14 } from '../const/CustomConsts';
+import { BgColor, BtnActive, BtnActive14 } from '../const/CustomConsts';
 import NavBar from "../components/Layout/NavBar";
 import { ArrowRight } from 'react-bootstrap-icons';
 import ImageBottomText from "../components/blog/ImageBottomText";
@@ -38,7 +38,7 @@ export default function Home() {
 
   const getFaqData = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/faq/active', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/active', {
       params: {
       }
     }
@@ -51,7 +51,7 @@ export default function Home() {
   }
   const getAttractionRecent = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/attraction/active', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction/active', {
       params: {
       }
     }
@@ -65,7 +65,7 @@ export default function Home() {
 
   const getDirectionRecent = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction/active', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction/active', {
       params: {
         limit: 6,
         offset: 0
@@ -81,7 +81,7 @@ export default function Home() {
 
   const getBlogRecent = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/blog/active', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/blog/active', {
       params: {
       }
     }
@@ -94,7 +94,7 @@ export default function Home() {
   }
   const getBlockData = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/meta', {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/meta', {
       params: {
       }
     }).then((res) => {

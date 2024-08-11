@@ -17,7 +17,7 @@ import WeatherPanel from "../../components/weather/WeatherPanel"
 import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import direction from "../../store/actions/direction/direction";
-import { API_BASE_URL, BgColor } from '../../const/CustomConsts';
+import { BgColor } from '../../const/CustomConsts';
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
 
@@ -48,7 +48,7 @@ const WeatherDetailPage = () => {
   const [directionList, setDirectionList] = useState([]);
   const getDirectionList = () => {
     setLoading(true);
-    axios.post(API_BASE_URL + '/direction',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction',
       {
         limit: 0,
         offset: 0
@@ -107,7 +107,7 @@ const WeatherDetailPage = () => {
     settotalDirection([...tmpDirections]);
 
     setLoading(true);
-    axios.post(API_BASE_URL + '/weather/forecast',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/weather/forecast',
       {
         directionID,
         date: moment(new Date).format("YYYY-MM-DD")

@@ -1,12 +1,9 @@
 'use client'
-import { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import Image from "next/image";
+import { useRef, useState } from 'react';
+import { useDispatch } from "react-redux";
 import Router from "next/router";
 import axios from "axios";
-import { useDropzone } from 'react-dropzone';
-import { API_BASE_URL } from '../../const/CustomConsts';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import NavBar from "../../components/Layout/NavBar";
 
 const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
@@ -63,7 +60,7 @@ const SignPage = () => {
 		if (avatar.file) { formData.append('avatar', avatar.file); }
 		console.log(avatar.file)
 		try {
-			const res = await axios.post(API_BASE_URL + '/auth/signup', formData, {
+			const res = await axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/auth/signup', formData, {
 				headers: {
 					'Content-Type': 'multipart/form-data'
 				}

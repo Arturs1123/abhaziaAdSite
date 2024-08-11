@@ -3,15 +3,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL } from '../../const/CustomConsts';
 import moment from "moment";
 import Image from "next/image";
 import { Image as ImageChak } from '@chakra-ui/react'
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
-import TG from "../../../public/img/SVG/TG";
-import VK from "../../../public/img/SVG/VK";
-import LinkIcon from "../../../public/img/SVG/LinkIcon";
 import Repeat from "../../../public/img/SVG/Repeat";
 import BlogAnswerPanel from "../../components/blog/BlogAnswerPanel";
 import BlogAnswerPanelRepeat from "../../components/blog/BlogAnswerPanelRepeat";
@@ -45,7 +41,7 @@ const BlogDetailPage = () => {
 
   const getBlogData = (detailId) => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/blog/detail/' + detailId, {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/blog/detail/' + detailId, {
       id: detailId
     }).then((res) => {
       setBlogData(res.data.data);
@@ -57,7 +53,7 @@ const BlogDetailPage = () => {
 
   const getBlogRecent = () => {
     setLoading(true);
-    axios.post(API_BASE_URL + '/blog',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/blog',
       { params: {} }
     ).then((res) => {
       setBlogRecent(res.data.data);

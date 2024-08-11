@@ -1,9 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import moment from "moment";
 import Router from "next/router";
-import { imageLoader } from "../../helper";
-import { API_BASE_URL } from "../../const/CustomConsts";
 
 export default function ImageBottomText({ id, imgSrc, imgDesc, imgDate, imgType }) {
 
@@ -14,8 +11,6 @@ export default function ImageBottomText({ id, imgSrc, imgDesc, imgDate, imgType 
       >
         <div className="flex w-full">
           <img
-            // loader={imageLoader}
-            // src={imgSrc}
             src={imgSrc}
             width={600}
             height={400}

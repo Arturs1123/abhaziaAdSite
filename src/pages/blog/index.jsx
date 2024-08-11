@@ -4,11 +4,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL } from '../../const/CustomConsts';
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
-import ImageRightText from "../../components/blog/ImageRightText";
-import ImageBottomText from "../../components/blog/ImageBottomText";
 import PagenationCircle from "../../components/common/PagenationCircle";
 import LinkIndex from "../../components/common/LinkIndex";
 import { Helmet } from 'react-helmet';
@@ -36,7 +33,7 @@ const BlogIndex = () => {
     getBlogData(e.target.id);
   }
   const getSeoData = () => {
-    axios.get(API_BASE_URL + "/blog/seo", {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + "/blog/seo", {
       params: {
         // limit: 5,
         // offset: pageNum
@@ -51,7 +48,7 @@ const BlogIndex = () => {
 
   const getBlogData = (selSeo) => {
     setLoading(true);
-    axios.post(API_BASE_URL + "/blog", {
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + "/blog", {
       limit: 0,
       offset: 0,
       seo: { id: selSeo }

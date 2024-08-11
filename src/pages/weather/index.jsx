@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import moment from 'moment';
 import NavBar from "../../components/Layout/NavBar";
@@ -9,9 +9,8 @@ import Star from "../../../public/img/SVG/Star";
 import WeatherPanel from "../../components/weather/WeatherPanel"
 import LinkIndex from "../../components/common/LinkIndex";
 import { Select } from '@chakra-ui/react'
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
-import { API_BASE_URL, BgColor } from '../../const/CustomConsts';
+import { BgColor } from '../../const/CustomConsts';
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
 
@@ -31,7 +30,7 @@ const WeatherIndexPage = () => {
 
   const getDirectionList = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction',
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction',
       {
         limit: 0,
         offset: 0
@@ -56,7 +55,7 @@ const WeatherIndexPage = () => {
 
   const getTodayWeather = () => {
     setLoading(true);
-    axios.post(API_BASE_URL + '/weather/today',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/weather/today',
       {
         directionID: selId,
         date: moment(new Date).format("YYYY-MM-DD")

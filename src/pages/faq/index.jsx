@@ -1,25 +1,19 @@
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
 import TeleBookPanel from "../../components/common/TeleBookPanel";
 import FaqPanel from "../../components/faq/FaqPanel";
 import PagenationCircle from "../../components/common/PagenationCircle";
-import { API_BASE_URL, BtnActive14 } from '../../const/CustomConsts';
 import LinkIndex from "../../components/common/LinkIndex";
 import DropzoneImage from "../../components/faq/dropzoneImage";
 import Router from "next/router";
-import { userRouter } from "next/router";
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
-import {
-  create_question,
-} from "../../const/Apis";
 
 const FaqIndexPage = () => {
   const [metaData, setMetaData] = useState({});
@@ -49,7 +43,7 @@ const FaqIndexPage = () => {
   const getFaqData = async (pageNum) => {
     setLoading(true);
     try {
-      const res = await axios.get(API_BASE_URL + '/faq/question', {
+      const res = await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/question', {
         params: {
           limit: stepValue,
           offset: pageNum * stepValue
@@ -68,7 +62,7 @@ const FaqIndexPage = () => {
     if (!userName) { toast.error('Вставить называть'); return; }
     if (!userAvatar) { toast.error('Вставить аватар'); return; }
 
-    axios.post(API_BASE_URL + '/faq/question',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/question',
       {
         questionText: textData,
         ownerName: userName,

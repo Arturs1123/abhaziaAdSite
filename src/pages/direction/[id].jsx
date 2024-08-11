@@ -11,7 +11,7 @@ import Footer from "../../components/Layout/Footer";
 import TeleBookPanel from "../../components/common/TeleBookPanel";
 import ImgDirectPanel from "../../components/common/ImgDirectPanel";
 import WeatherPanel from "../../components/weather/WeatherPanel"
-import { API_BASE_URL, BtnActive } from '../../const/CustomConsts';
+import { BtnActive } from '../../const/CustomConsts';
 import LinkDetail from "../../components/common/LinkDetail";
 import SocialLink from "../../components/common/SocailLink";
 import { Helmet } from 'react-helmet';
@@ -35,7 +35,7 @@ export default function DirectionDetailPage() {
   const subtitleList = contentData.filter((item, i) => item.tool == 'subtitle' && item.data.size == "level1")
   const getDirectionRecent = () => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction', { params: {} }
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction', { params: {} }
     ).then((res) => {
       setDirectionRecent(res.data.data);
       setLoading(false);
@@ -46,7 +46,7 @@ export default function DirectionDetailPage() {
 
   const getDirectionData = (id) => {
     setLoading(true);
-    axios.get(API_BASE_URL + '/direction/' + id,
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/direction/' + id,
       {
         id
       }).then((res) => {

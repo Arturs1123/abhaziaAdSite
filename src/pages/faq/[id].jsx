@@ -1,9 +1,7 @@
 import { NextSeo } from "next-seo";
 import { useEffect, useState, useRef } from "react"
-import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import Router, { useRouter } from 'next/router'
 import moment from "moment";
@@ -11,8 +9,7 @@ import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
 import TeleBookPanel from "../../components/common/TeleBookPanel";
 import AnswerPanel from "../../components/faq/AnswerPanel";
-import AnswerPanelRepeat from "../../components/faq/AnswerPanelRepeat";
-import { API_BASE_URL, BtnActive } from '../../const/CustomConsts';
+import { BtnActive } from '../../const/CustomConsts';
 import DropzoneImage from "../../components/faq/dropzoneImage";
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
@@ -59,7 +56,7 @@ const FaqDetailPage = () => {
   const getFaqDetailData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(API_BASE_URL + '/faq/question/' + detailId, {
+      const res = await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/question/' + detailId, {
         id: detailId,
       });
       setFaqData(res.data.data);
@@ -84,7 +81,7 @@ const FaqDetailPage = () => {
     saveData.rateArr = rateArr;
     localStorage.saveData = JSON.stringify(saveData);
 
-    axios.put(API_BASE_URL + '/faq/admin/answer/' + id,
+    axios.put(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/admin/answer/' + id,
       { 'rating': rateValue }
     ).then((res) => {
       if (res.data.statusCode == 200) {
@@ -105,7 +102,7 @@ const FaqDetailPage = () => {
     if (!userName) { toast.error('Вставить называть'); return; }
     if (!userAvatar) { toast.error('Вставить аватар'); return; }
 
-    axios.post(API_BASE_URL + '/faq/answer',
+    axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/answer',
       {
         questionID: detailId,
         answerText: textData,
