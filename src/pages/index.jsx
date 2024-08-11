@@ -197,7 +197,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4 md:gap-6">
               {blogRecent.slice(0, 3).map((v, i) => (
                 <div key={i} className="col-span-3 md:col-span-1">
-                  <imgBottomText
+                  <ImageBottomText
                     id={v.id}
                     imgSrc={v.bgImg}
                     imgDesc={v.title}
