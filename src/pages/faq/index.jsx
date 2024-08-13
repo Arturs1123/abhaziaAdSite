@@ -125,7 +125,7 @@ const FaqIndexPage = () => {
                         <FaqPanel
                           id={v.id}
                           questionText={v.questionText}
-                          createAt={v.createAt}
+                          createAt={v.creationDate}
                           answers={v.answers}
                           userName={v.ownerName}
                           userAvatar={v.ownerAvatar}

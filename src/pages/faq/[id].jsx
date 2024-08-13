@@ -165,16 +165,15 @@ const FaqDetailPage = () => {
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <img src={faqData.ownerAatar ? faqData.ownerAatar : '/icon/avatar.png'}
-                    width={56} height={56}
-                    className="object-cover rounded-full"
+                  <img src={faqData.ownerAvatar ? faqData.ownerAvatar : '/icon/avatar.png'}
+                    className="object-cover rounded-full w-14 h-14"
                   />
                   <div className="flex flex-col gap-1">
                     <p className="text-base md:text-md font-medium">
                       {faqData.ownerName}
                     </p>
                     <p className="text-xs md:text-base font-medium text-[#919494]">
-                      {moment(faqData.createAt).format("DD MMMM YYYY")}
+                      {moment(faqData.creationDate).format("DD MMMM YYYY")}
                     </p>
                   </div>
                 </div>
@@ -208,7 +207,7 @@ const FaqDetailPage = () => {
                         userName={v.ownerName}
                         avatar={v.ownerAvatar}
                         answer={v.answerText}
-                        aDate={moment(v.createAt)}
+                        aDate={moment(v.creationDate)}
                         feedCount={v.rating}
                         handleFeed={() => {
                           handleRate(v.id, v.rating);
