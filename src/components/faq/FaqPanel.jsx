@@ -3,14 +3,14 @@ import moment from "moment";
 import 'moment/locale/ru';
 import { BtnActive14 } from '../../const/CustomConsts';
 
-const FaqPanel = ({ id, questionText, createAt, answers, userName, userAvatar }) => {
+const FaqPanel = ({ id, questionText, createAt, answers, userName, userAvatar, uniqueLink }) => {
     let faqDay = moment(createAt).format("DD MMMM YYYY");
     const today = moment().format("DD MMMM YYYY");
     const beforeDay = moment().add(-1, 'days').format("DD MMMM YYYY");
     if (faqDay == today) { faqDay = 'Сегодня'; }
     if (faqDay == beforeDay) { faqDay = 'Вчера'; }
-    let detailAnsLink = "/faq/" + id + '?scrollTo=answerBtn';
-    let detailLink = "/faq/" + id;
+    let detailAnsLink = `/faq/${uniqueLink}?qid=${id}&scrollTo=answerBtn`;
+    let detailLink = `/faq/${uniqueLink}?qid=${id}`;
 
     return (
         <div className="flex flex-col w-full rounded-xl p-5 space-y-4 bg-white border border-[#D7D7D7] font-Manrop">

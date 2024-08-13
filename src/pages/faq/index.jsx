@@ -129,6 +129,7 @@ const FaqIndexPage = () => {
                           answers={v.answers}
                           userName={v.ownerName}
                           userAvatar={v.ownerAvatar}
+                          uniqueLink={v.uniqueLink}
                         />
                       </div>
                     ))

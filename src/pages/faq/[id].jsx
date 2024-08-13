@@ -22,30 +22,21 @@ const FaqDetailPage = () => {
   const [adminAnswer, setAdminAnswer] = useState(null);
   const [normalAnswer, setNormalAnswer] = useState(null);
   const [textData, setTextData] = useState('');
-  const [newAnswer, setNewAnswer] = useState(1);
-  const [detailId, setDetailId] = useState(0);
   const [userName, setUserName] = useState('');
   const [userAvatar, setUserAvatar] = useState(null);
   const router = useRouter();
   const answerBtnRef = useRef(null);
+
   const handleNewImg = (newImgPath) => { setUserAvatar(newImgPath); }
 
   const handleTextChange = (event) => {
     setTextData(event.target.value);
   }
-  useEffect(() => {
-    getFaqDetailData();
-  }, [detailId]);
-
-  useEffect(() => {
-    if (router.query.id > 0) {
-      setDetailId(router.query.id);
-    }
-  }, [router.query.id])
 
   useEffect(() => {
     var saveData = JSON.parse(localStorage?.saveData || null) || {};
     setUserInfo(saveData.userInfo);
+    getFaqDetailData();
     getMetaData({}).then(res => {
       setMetaData(res.data.data.filter((ele) => ele.url === useRouter().pathname)[0]);
     }).catch(err => {
@@ -56,9 +47,7 @@ const FaqDetailPage = () => {
   const getFaqDetailData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/question/' + detailId, {
-        id: detailId,
-      });
+      const res = await axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/question/' + router.query.qid);
       setFaqData(res.data.data);
       setAdminAnswer(res.data.data?.answers?.filter(function (obj) { return (obj.isRight == true) && obj.approve == 1 })[0]);
       setNormalAnswer(res.data.data?.answers?.filter(function (obj) { return (obj.isRight == false) && obj.approve == 1 }));
@@ -104,7 +93,7 @@ const FaqDetailPage = () => {
 
     axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + '/faq/answer',
       {
-        questionID: detailId,
+        questionID: router.query.qid,
         answerText: textData,
         ownerName: userName,
         ownerAvatar: userAvatar
