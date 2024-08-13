@@ -1,36 +1,22 @@
 import { useEffect, useState } from "react";
 import Router, { useRouter } from 'next/router';
-import Link from "next/link";
 import { Image as ImageChak } from '@chakra-ui/react'
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { TailSpin } from "react-loader-spinner";
-import Scrollspy from 'react-scrollspy'
 import { BtnActive } from '../../const/CustomConsts';
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
 import TeleBookPanel from "../../components/common/TeleBookPanel";
 import ImgAttractionPanel from "../../components/attraction/ImgAttractionPanel";
-import YMapProvider from "../../components/common/YMapProvider";
 import LinkDetail from "../../components/common/LinkDetail";
 import SocialLink from "../../components/common/SocailLink";
 import { ArrowRight } from 'react-bootstrap-icons';
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
+import SubtitleList from "../../components/common/SubtitleList";
+import PreviewComponents from "../../components/common/PreviewComponents";
 
-const scrollToSection = (e, id) => {
-  e.preventDefault();
-  const targetElement = document.getElementById(id);
-  if (targetElement) {
-    const offset = 94;
-    const elementPosition = targetElement.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
-  }
-};
 const AttractionDetail = () => {
   const [metaData, setMetaData] = useState({});
   const [isHovered1, setIsHovered1] = useState(false);
@@ -40,6 +26,10 @@ const AttractionDetail = () => {
   const [attractionRecent, setAttractionRecent] = useState([]);
   const router = useRouter();
   const detailId = router.query.id;
+
+  const contentData = attractionData?.contents ? JSON.parse(attractionData.contents[0].content) : []
+  const subtitleList = contentData.filter((item, i) => item.tool == 'subtitle' && item.data.size == "level1")
+
   const getAttractionRecent = () => {
     setLoading(true);
     axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction', {
@@ -68,12 +58,6 @@ const AttractionDetail = () => {
     getAttractionRecent();
   }, [detailId])
   useEffect(() => {
-    // Ensure that any hash in the URL on initial load also respects the offset
-    const hash = window.location.hash;
-    if (hash) {
-      const id = hash.substring(1); // Remove the '#' character
-      scrollToSection({ preventDefault: () => { } }, id);
-    }
     getMetaData({}).then(res => {
       setMetaData(res.data.data.filter((ele) => ele.page === 'attraction-detail')[0]);
     }).catch(err => {
@@ -117,26 +101,7 @@ const AttractionDetail = () => {
                       <div className="hidden md:flex md:mb-14">
                         <SocialLink />
                       </div>
-                      <div className="flex flex-col gap-6">
-                        <h4 className="text-[20px] md:text-[30px] ">
-                          Оглавление
-                        </h4>
-                        <Scrollspy items={['section-0', 'section-1', 'section-2', 'section-3', 'section-4', 'section-5', 'section-6', 'section-7', 'section-8', 'section-9', 'section-10', 'section-11', 'section-12', 'section-13', 'section-14', 'section-15', 'section-16', 'section-17', 'section-18', 'section-19', 'section-20']}
-                          currentClassName="is-current">
-                          {attractionData?.contents?.map((v, i) => (
-                            <li key={i} className="flex items-center gap-3 py-2 !text-base md:!text-md">
-                              <div className="w-3 h-3 md:!w-4 md:!h-4 bg-red-300 rounded-full">
-                                <span className="w-4 text-transparent">no</span>
-                              </div>
-                              <Link href={`#section-${i}`}>
-                                <span onClick={(e) => scrollToSection(e, `section-${i}`)} className="cursor-pointer hover:font-semibold">
-                                  {v.question}
-                                </span>
-                              </Link>
-                            </li>
-                          ))}
-                        </Scrollspy>
-                      </div>
+                      <SubtitleList params={subtitleList} />
                       <div className="flex justify-center w-full">
                         <button className={`${BtnActive}`}
                           onClick={() => { Router.push('/') }}
@@ -153,29 +118,14 @@ const AttractionDetail = () => {
                 <div className="w-full">
                   <div className="py-3 md:py-10 space-y-4">
                     <div className="text-base md:text-lg xl:text-lg font-medium text-[#292D32] font-Manrop detail-custom-css">
-                      <p>{attractionData.description} </p>
+                      <p dangerouslySetInnerHTML={{ __html: attractionData.description }} />
                     </div>
-                    {attractionData.contents && (
-                      <div className="space-y-3">
-                        <YMapProvider className="w-full" mapX={attractionData.latitude} mapY={attractionData.longitude} />
-                      </div>
-                    )}
-
                   </div>
-                  {attractionData?.contents?.map((v, i, arr) => (
-                    <div key={i} className="py-2 md:py-4 space-y-2 md:space-y-10" id={v.id}>
-                      <div className="text-2xl md:text-3xl xl:text-[44px] xl:leading-[52.8px] font-bold">
-                        <section id={`section-${i}`}>
-                          <h3 className="xl:leading-[48.2px] !text-[24px] md:!text-[44px]" dangerouslySetInnerHTML={{ __html: v.question }} />
-                        </section>
-                      </div>
-                      <div className="space-y-3 md:space-y-8">
-                        <div className="text-base md:text-lg font-medium detail-custom-css font-Manrop">
-                          <div dangerouslySetInnerHTML={{ __html: v.content }} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                  {
+                    contentData.map((item, i) =>
+                      <PreviewComponents data={item} key={i} />
+                    )
+                  }
                   <div className="py-4 md:py-10 space-y-4 font-Manrop">
                     <div className="flex justify-center">
                       <p className="text-[44px] md:text-5xl xl:text-6xl font-normal text-[#FF6432]">

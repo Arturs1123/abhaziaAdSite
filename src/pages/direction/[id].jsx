@@ -23,12 +23,13 @@ import PreviewComponents from "../../components/common/PreviewComponents";
 
 export default function DirectionDetailPage() {
   const [metaData, setMetaData] = useState({});
-  const router = useRouter();
   const [directionData, setDirectionData] = useState({});
   const [directionRecent, setDirectionRecent] = useState([]);
   const [loading, setLoading] = useState(false);
   const [todayWeather, setTodayWeather] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
+  
+  const router = useRouter();
   const detailId = router.query.id;
 
   const contentData = directionData?.contents ? JSON.parse(directionData.contents[0].content) : []
