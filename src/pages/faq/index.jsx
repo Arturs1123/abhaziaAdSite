@@ -11,7 +11,7 @@ import FaqPanel from "../../components/faq/FaqPanel";
 import PagenationCircle from "../../components/common/PagenationCircle";
 import LinkIndex from "../../components/common/LinkIndex";
 import DropzoneImage from "../../components/faq/dropzoneImage";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
 
@@ -25,12 +25,13 @@ const FaqIndexPage = () => {
   const [loading, setLoading] = useState(false);
   const stepValue = 6;
   const [pageNum, setPageNum] = useState(0);
+  const router = useRouter()
 
   const handleNewImg = (newImgPath) => { setUserAvatar(newImgPath); }
 
   useEffect(() => {
     getMetaData({}).then(res => {
-      setMetaData(res.data.data.filter((ele) => ele.url === useRouter().pathname)[0]);
+      setMetaData(res.data.data.filter((ele) => ele.url === router.pathname)[0]);
     }).catch(err => {
       console.log(err);
     })

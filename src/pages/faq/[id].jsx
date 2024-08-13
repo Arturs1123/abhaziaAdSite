@@ -38,7 +38,7 @@ const FaqDetailPage = () => {
     setUserInfo(saveData.userInfo);
     getFaqDetailData();
     getMetaData({}).then(res => {
-      setMetaData(res.data.data.filter((ele) => ele.url === useRouter().pathname)[0]);
+      setMetaData(res.data.data.filter((ele) => ele.url.trim() === router.query.id.trim())[0]);
     }).catch(err => {
       console.log(err);
     })
