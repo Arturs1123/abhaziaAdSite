@@ -26,7 +26,7 @@ const BlogDetailPage = () => {
   const [loading, setLoading] = useState(false);
   const [blogData, setBlogData] = useState([]);
   const [blogRecent, setBlogRecent] = useState([]);
-  const detailId = router.query.id;
+  const detailId = router.query.bid;
   const [curSi, setCurSi] = useState(0);
   const contentData = blogData?.contents ? JSON.parse(blogData.contents[0].content) : []
   const subtitleList = contentData.filter((item, i) => item.tool == 'subtitle' && item.data.size == "level1")
@@ -41,9 +41,7 @@ const BlogDetailPage = () => {
 
   const getBlogData = (detailId) => {
     setLoading(true);
-    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/blog/detail/' + detailId, {
-      id: detailId
-    }).then((res) => {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/blog/detail/' + detailId).then((res) => {
       setBlogData(res.data.data);
       setLoading(false);
     }).catch((err) => {
@@ -226,6 +224,7 @@ const BlogDetailPage = () => {
                       blogRecent?.slice(curSi, curSi + 3).map((v, i, a) => (
                         <div key={i} className="col-span-3 md:col-span-1">
                           <ImageBottomText
+                            uniqueLink={v.uniqueLink}
                             id={v.id}
                             imgSrc={v.bgImg}
                             imgDesc={v.title}

@@ -25,16 +25,15 @@ const AttractionDetail = () => {
   const [attractionData, setAttractionData] = useState([]);
   const [attractionRecent, setAttractionRecent] = useState([]);
   const router = useRouter();
-  const detailId = router.query.id;
+  const detailId = router.query.aid;
 
   const contentData = attractionData?.contents ? JSON.parse(attractionData.contents[0].content) : []
   const subtitleList = contentData.filter((item, i) => item.tool == 'subtitle' && item.data.size == "level1")
 
   const getAttractionRecent = () => {
     setLoading(true);
-    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction', {
-      params: {}
-    }).then((res) => {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction').then((res) => {
+      console.log(res.data.data)
       setAttractionRecent(res.data.data);
       setLoading(false);
     }).catch((err) => {
@@ -43,9 +42,7 @@ const AttractionDetail = () => {
   }
   const getAttractionData = (id) => {
     setLoading(true);
-    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction/' + id, {
-      attractionID: id
-    }).then((res) => {
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction/' + id).then((res) => {
       setAttractionData(res.data.data);
       setLoading(false);
     }).catch((err) => {

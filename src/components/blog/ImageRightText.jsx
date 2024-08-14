@@ -1,16 +1,13 @@
 import React from "react";
-import Link from "next/link";
 import moment from "moment";
-import Image from "next/image";
-import { imageLoader } from "../../helper";
 import Router from "next/router";
 
-export default function ImageRightText({ id, imgTitle, imgSrc, imgDesc, imgDate, imgType }) {
-
+export default function ImageRightText({ id, imgTitle, imgSrc, imgDesc, imgDate, imgType, uniqueLink }) {
+  const link = `/blog/${uniqueLink}?bid=${id}`
   return (
     <div>
       <div className="cursor-pointer flex w-full bg-white rounded-xl border border-[#EEEEEE] gap-3 md:gap-5"
-        onClick={() => { Router.push(`/blog/${id}`) }}
+        onClick={() => { Router.push(link) }}
       >
         <div className="flex w-[34%]">
           <img

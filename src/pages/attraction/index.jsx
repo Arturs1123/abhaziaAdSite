@@ -39,7 +39,7 @@ const AttractionIndex = () => {
   }
   const getAttraction = (spanSel) => {
     setLoading(true);
-    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction',
+    axios.get(process.env.NEXT_PUBLIC_API_BASE_URL + '/attraction/active',
       {
         directionID: directionList[spanSel].id,
         limit: 0,
@@ -123,13 +123,13 @@ const AttractionIndex = () => {
                 {moreFlag ? (
                   attractionData.map((v, i) => (
                     <div key={i} className="col-span-3 md:col-span-1">
-                      <AttractionLink data={v} link={"/attraction/"} />
+                      <AttractionLink data={v} />
                     </div>
                   ))
                 ) : (
                   attractionData.slice(0, 6).map((v, i) => (
                     <div key={i} className="col-span-3 md:col-span-1">
-                      <AttractionLink data={v} link={"/attraction/"} />
+                      <AttractionLink data={v} />
                     </div>
                   ))
                 )}

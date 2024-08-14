@@ -2,7 +2,6 @@ import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
 import { TailSpin } from "react-loader-spinner";
 import NavBar from "../../components/Layout/NavBar";
 import Footer from "../../components/Layout/Footer";
@@ -10,6 +9,8 @@ import PagenationCircle from "../../components/common/PagenationCircle";
 import LinkIndex from "../../components/common/LinkIndex";
 import { Helmet } from 'react-helmet';
 import { getMetaData } from "../../const/Apis";
+import ImageRightText from '../../components/blog/ImageRightText'
+import ImageBottomText from '../../components/blog/ImageBottomText'
 
 const BlogIndex = () => {
   const [metaData, setMetaData] = useState({});
@@ -51,7 +52,8 @@ const BlogIndex = () => {
     axios.post(process.env.NEXT_PUBLIC_API_BASE_URL + "/blog", {
       limit: 0,
       offset: 0,
-      seo: { id: selSeo }
+      seo: { id: selSeo },
+      active: true
       // seos: [{ id: 1 }, { id: 3 }]
     }).then((res) => {
       setBlogData(res.data.data);
@@ -94,7 +96,8 @@ const BlogIndex = () => {
                   <div className="grid grid-cols-2 gap-2 md:gap-4">
                     {blogData.slice(pageNum, pageNum + 2).map((v, i) => (
                       <div key={i} className="col-span-2 md:col-span-1">
-                        <imgRightText
+                        <ImageRightText
+                          uniqueLink={v.uniqueLink}
                           id={v.id}
                           imgSrc={v.bgImg}
                           imgTitle={''}
@@ -109,7 +112,8 @@ const BlogIndex = () => {
                   <div className="grid grid-cols-3 gap-2 md:gap-4">
                     {blogData.slice(pageNum, pageNum + 3).map((v, i) => (
                       <div key={i} className="col-span-3 md:col-span-1">
-                        <imgBottomText
+                        <ImageBottomText
+                          uniqueLink={v.uniqueLink}
                           id={v.id}
                           imgSrc={v.bgImg}
                           imgDesc={v.title}

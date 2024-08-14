@@ -2,12 +2,13 @@ import React from "react";
 import moment from "moment";
 import Router from "next/router";
 
-export default function ImageBottomText({ id, imgSrc, imgDesc, imgDate, imgType }) {
+export default function ImageBottomText({ id, imgSrc, imgDesc, imgDate, imgType, uniqueLink }) {
+  const link = `/blog/${uniqueLink}?bid=${id}`
 
   return (
     <div className="w-full">
       <div className="cursor-pointer flex flex-col w-full bg-white rounded-xl border border-[#EEEEEE] gap-2 md:gap-4"
-        onClick={() => { Router.push(`/blog/${id}`) }}
+        onClick={() => { Router.push(link) }}
       >
         <div className="flex w-full">
           <img

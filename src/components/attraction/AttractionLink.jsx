@@ -1,7 +1,8 @@
 import React from "react";
 import Router from "next/router";
-const AttractionLink = ({ data, link }) => {
-    const routerPath = link + data.id;
+const AttractionLink = ({ data }) => {
+    const routerPath = `/attraction/${data.uniqueLink}?aid=${data.id}`;
+
     return (
         <div>
             <div onClick={() => { Router.push(routerPath) }} className='cursor-pointer flex w-full h-full justify-center rounded-[20px] relative'>
