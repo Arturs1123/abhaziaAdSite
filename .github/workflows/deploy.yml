@@ -27,4 +27,4 @@ jobs:
         chmod 600 ~/.ssh/simba
         ssh-keyscan -H 195.114.193.110 >> ~/.ssh/known_hosts
         rsync -avz -e "ssh -i ~/.ssh/simba" ./ simba@195.114.193.110:/home/simba/Said/AbAdSite/
-        ssh -i ~/.ssh/id_rsa eric@195.114.193.110 'npm install && pm2 start npm --name "abhaziaAdSite" -- start -- -p 4000'
+        ssh -i ~/.ssh/simba eric@195.114.193.110 'npm install && pm2 start npm --name "abhaziaAdSite" -- start -- -p 4000'
