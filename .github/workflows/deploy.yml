@@ -23,8 +23,8 @@ jobs:
         SSH_KEY: ${{ secrets.SSH_KEY }}
       run: |
         mkdir -p ~/.ssh
-        echo "$SSH_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        echo "$SSH_KEY" > ~/.ssh/simba
+        chmod 600 ~/.ssh/simba
         ssh-keyscan -H 195.114.193.110 >> ~/.ssh/known_hosts
-        rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./ simba@195.114.193.110:/home/simba/Said/AbAdSite/
+        rsync -avz -e "ssh -i ~/.ssh/simba" ./ simba@195.114.193.110:/home/simba/Said/AbAdSite/
         ssh -i ~/.ssh/id_rsa eric@195.114.193.110 'npm install && pm2 start npm --name "abhaziaAdSite" -- start -- -p 4000'
