@@ -1,31 +1,30 @@
-name: Deploy
+name: Deploy abhaziaAdSite
 
 on:
   push:
     branches:
-      - main  # Ветка, по пушу в которую будет запускаться деплой
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Add SSH key
-      uses: webfactory/ssh-agent@v0.5.3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        node-version: '20'
 
-    - name: Deploy and build on server
+    - name: Deploy to server
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@89.111.134.237 << 'EOF'
-          cd /var/www/daisa.ru/abkhazia-frontend/
-          git pull
-          pm2 stop daisa-frontend
-          npm install
-          npm run build
-          pm2 start daisa-frontend
-          pm2 save
-        EOF
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H 195.114.193.110 >> ~/.ssh/known_hosts
+        rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./ simba@195.114.193.110:/home/simba/Said/AbAdSite/
+        ssh -i ~/.ssh/id_rsa eric@195.114.193.110 'npm install && pm2 start npm --name "abhaziaAdSite" -- start -- -p 4000'
