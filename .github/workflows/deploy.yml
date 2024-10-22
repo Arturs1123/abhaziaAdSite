@@ -27,4 +27,4 @@ jobs:
         chmod 600 ~/.ssh/simba
         ssh-keyscan -H 195.114.193.110 >> ~/.ssh/known_hosts
         rsync -avz -e "ssh -i ~/.ssh/simba" ./ simba@195.114.193.110:/home/simba/Said/AbAdSite/
-        ssh -i ~/.ssh/simba simba@195.114.193.110 'cd Said/AbAdSite && pnpm build && pm2 restart 0'
+        ssh -i ~/.ssh/simba simba@195.114.193.110 'cd Said/AbAdSite && pnpm build && pm2 restart 0 && pm2 save'
